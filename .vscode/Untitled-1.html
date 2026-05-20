@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tienda Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .cart {
+      cursor: pointer;
+    }
+
+    .container {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .product h3 {
+      margin: 10px 0;
+    }
+
+    .product p {
+      color: #555;
+    }
+
+    .product button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .product button:hover {
+      background-color: #218838;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #222;
+      color: white;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Mi Tienda</h1>
+  <div class="cart">🛒 Carrito (<span id="cart-count">0</span>)</div>
+</header>
+
+<section class="container" id="product-list">
+  <!-- Productos -->
+</section>
+
+<footer>
+  <p>© 2026 Mi Tienda Online</p>
+</footer>
+
+<script>
+  const products = [
+    { id: 1, name: "Producto 1", price: 10, image: "https://via.placeholder.com/200" },
+    { id: 2, name: "Producto 2", price: 20, image: "https://via.placeholder.com/200" },
+    { id: 3, name: "Producto 3", price: 30, image: "https://via.placeholder.com/200" },
+    { id: 4, name: "Producto 4", price: 40, image: "https://via.placeholder.com/200" }
+  ];
+
+  let cart = 0;
+
+  const productList = document.getElementById("product-list");
+  const cartCount = document.getElementById("cart-count");
+
+  function renderProducts() {
+    products.forEach(product => {
+      const div = document.createElement("div");
+      div.classList.add("product");
+
+      div.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>$${product.price}</p>
+        <button onclick="addToCart()">Agregar al carrito</button>
+      `;
+
+      productList.appendChild(div);
+    });
+  }
+
+  function addToCart() {
+    cart++;
+    cartCount.textContent = cart;
+  }
+
+  renderProducts();
+</script>
+
+</body>
+</html>

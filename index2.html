@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Devhobbit Jobs - Practica de CSS</title>
+    <link rel="stylesheet" href="./estilos/clase2.css" />
+</head>
+
+<body>
+    <!-- Heo, bader principal: loguscador y menu -->
+    <header class="site-header">
+        <div class="brand">
+            <span class="brand-icon">D</span>
+            <div>
+                <p class="brand-title"><strong>Biografia</strong></p>
+            </div>
+        </div>
+        <form class="search" role="search">
+            <label class="sr-only" for="search-input">Buscar</label>
+            <input id="search-input" type="text" placeholder="Buscar empleos o empresas" />
+            <button type="submit">Buscar</button>
+        </form>
+        <nav class="main-nav" aria-label="Navegacion">
+            <a href="#destacadas">Destacadas</a>
+            <a href="#stats">Estadisticas</a>
+            <a href="#empresas">Empresas</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <!-- Seccion principal con imagen + datos (layout tipo tarjeta) -->
+        <section class="profile">
+            <img src="./007.png" alt="Imagen de oficina" class="profile-photo" />
+            <div class="profile-info">
+                <h1>Bolsa de empleo para desarrolladores</h1>
+                <p class="role">Encuentra oportunidades reales en tecnologia</p>
+                <div class="profile-meta">
+                    <div>
+                        <p class="meta-label">Ubicacion</p>
+                        <p class="meta-value">Loja, Ecuador</p>
+                    </div>
+                    <div>
+                        <p class="meta-label">Modalidad</p>
+                        <p class="meta-value">Remoto y presencial</p>
+                    </div>
+                    <div>
+                        <p class="meta-label">Nivel</p>
+                        <p class="meta-value">Junior y Semi Senior</p>
+                    </div>
+                    <div>
+                        <p class="meta-label">Actualizado</p>
+                        <p class="meta-value">Hoy</p>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="badge">120 ofertas activas</button>
+                    <button class="badge badge-outline">Sube tu CV</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seccion de texto largo (bio o descripcion) -->
+        <section class="section" id="destacadas">
+            <header class="section-header">
+                <h2>Ofertas destacadas</h2>
+            </header>
+            <p class="text">
+                Estas vacantes estan seleccionadas para estudiantes y perfiles junior.
+                Revisa requisitos basicos y aplica con tu portafolio.
+            </p>
+        </section>
+
+        <!-- Tarjetas de estadisticas en grid -->
+        <section class="section" id="stats">
+            <header class="section-header">
+                <h2>Estadisticas del mercado</h2>
+            </header>
+            <div class="card-grid">
+                <article class="card">
+                    <p class="card-title">Vacantes remotas</p>
+                    <p class="card-value">45%</p>
+                </article>
+                <article class="card">
+                    <p class="card-title">Junior con HTML/CSS</p>
+                    <p class="card-value">38%</p>
+                </article>
+                <article class="card">
+                    <p class="card-title">Frontend solicitado</p>
+                    <p class="card-value">Top 3</p>
+                </article>
+                <article class="card">
+                    <p class="card-title">Salario inicial</p>
+                    <p class="card-value">$500 - $800</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Tarjetas con fotos/miniaturas -->
+        <section class="section" id="empresas">
+            <header class="section-header">
+                <h2>Empresas que contratan</h2>
+            </header>
+            <div class="card-grid card-grid--photos">
+                <article class="photo-card">
+                    <div class="photo-placeholder"></div>
+                    <p class="card-title">PixelLab</p>
+                    <p class="card-subtitle">Frontend Junior</p>
+                </article>
+                <article class="photo-card">
+                    <div class="photo-placeholder"></div>
+                    <p class="card-title">CloudNova</p>
+                    <p class="card-subtitle">QA Tester</p>
+                </article>
+                <article class="photo-card">
+                    <div class="photo-placeholder"></div>
+                    <p class="card-title">DevHive</p>
+                    <p class="card-subtitle">Backend Trainee</p>
+                </article>
+                <article class="photo-card">
+                    <div class="photo-placeholder"></div>
+                    <p class="card-title">DataPulse</p>
+                    <p class="card-subtitle">Analista Junior</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Ejercicio practico para la clase de CSS</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+
+* {
+/* Elimina el margen por defecto de los elementos.
+Otros usos: margin: 10px; margin: 10px 20px; margin: auto (para centrar); */
+margin: 0;
+/* Elimina el relleno por defecto de los elementos (el espacio DENTRO del borde).
+Otros usos: padding: 1rem; padding: 10px 5px 0 0; */
+padding: 0;
+/* El tamaño del elemento incluye tanto el padding como el border.
+Otros usos: content-box (el tamaño width/height solo aplica al contenido, el padding y border se suman al tamaño final). */
+box-sizing: border-box;
+}
+
+/* :root selecciona el elemento raíz del documento (normalmente la etiqueta <html>).
+Es ideal para declarar variables CSS que se pueden usar en todo el documento llamándolas con var() */
+:root {
+/* Declaración de variables CSS para colores (formato hexadecimal y rgba) */
+--primary: #0c2e50;
+--primary-dark: #0a3d66;
+--primary-hover: #0d5ba8;
+--primary-light: #09f;
+--background: #041a31;
+--text-primary: #7d87b1;
+--text-secondary: #cbd5e1;
+--text-muted: #94a3b8;
+--border: rgba(255, 255, 255, 0.1);
+--card-bg: #1e293b;
+--shadow: rgba(0, 0, 0, 0.3);
+--input-bg: #1e293b;
+--hsla-example: rgb(139, 102, 165);
+
+}
+
+/* Importación de fuente web 'Inter Variable' */
+@font-face {
+font-family: 'Inter Variable';
+font-style: normal;
+font-display: swap;
+font-weight: 100 900;
+src: url(https://cdn.jsdelivr.net/fontsource/fonts/inter:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* Estilos generales para el cuerpo de la página */
+body {
+/* Define la tipografía. system-ui usa la fuente por defecto del sistema operativo (Windows/Mac/iOS/Android). */
+font-family: system-ui;
+/* Define el color de fondo usando la variable --background.
+Otros usos: background-image: url(); background: linear-gradient(...); */
+background-color: var(--background);
+/* Define el color del texto. */
+color: var(--text-primary);
+/* Altura mínima del cuerpo: 100vh significa el 100% de la altura visible de la pantalla.
+Otros usos: min-height: 500px; min-height: 50%; */
+min-height: 100vh;
+/* ==================== DISPLAY ====================
+display: flex; convierte a este elemento en un contenedor flexible.
+Otras opciones de display:
+- block: El elemento ocupa todo el ancho disponible y crea un salto de línea (como un <div> o <p> por defecto).
+- inline: Ocupa solo el ancho necesario y NO permite configurar altura (height) ni margen superior/inferior (como <a> o <span> por defecto).
+- inline-block: Como inline, pero SÍ permite modificar ancho y alto.
+- grid: Crea un contenedor de cuadrícula que permite posicionar elementos en filas y columnas bidimensionales.
+- none: Oculta el elemento por completo como si no existiera en el HTML. */
+display: flex;
+/* Como es flex, le decimos que sus hijos se apilen de arriba hacia abajo (en columna).
+Otras opciones: row (de izquierda a derecha), row-reverse (derecha a izquierda), column-reverse. */
+flex-direction: column;
+/* Espaciado entre líneas de texto. 1.6 significa 1.6 veces el tamaño de la fuente. */
+line-height: 1.6;
+}
+
+/* --- Títulos principales --- */
+h1 {
+/* Tamaño de la tipografía. 1.5rem equivale a (1.5 * 16px) si 16px es la base del HTML. */
+font-size: 1.5rem;
+/* Altura de la línea específica para el título h1. */
+line-height: 1.2;
+/* Propiedad moderna: ajusta automáticamente el texto largo para que quede balanceado sin "viudas" al final. */
+text-wrap: balance;
+display: flex;
+/* align-items alinea los elementos a lo largo del eje transversal (verticalmente, en un display flex row).
+- center: Los centra.
+- flex-start: Los alinea al tope.
+- flex-end: Los alinea al fondo.
+- stretch: Estira los elementos para llenar el contenedor. */
+align-items: center;
+/* gap: define la separación "hueco" automática entre los elementos hijos de este display flex. */
+gap: 0.5rem;
+
+/* Estilos anidados para los SVG dentro del h1 (requiere un preprocesador o CSS moderno) */
+svg {
+/* width: ancho del elemento. Otros usos: %, vw, auto. */
+width: 2rem;
+/* height: alto del elemento. Otros usos: %, vh, auto. */
+height: 2rem;
+color: var(--primary-light);
+}
+}
+
+/* El selector + (hermano adyacente) selecciona cualquier <p> que siga INMEDIATAMENTE después de un <h1> en el HTML */
+h1 + p {
+text-wrap: balance;
+/* Margen en la parte inferior para darle espacio al siguiente elemento. */
+margin-bottom: 2rem;
+}
+
+/* --- Header o Encabezado de la página --- */
+header {
+/* border-bottom: Añade una línea en la parte inferior del elemento.
+Estructura: [grosor] [estilo: solid, dashed, dotted, double] [color] */
+border-bottom: 1px solid var(--border);
+background: var(--background);
+/* padding: .5rem arriba/abajo y 1rem izquierda/derecha.
+La sintaxis de 2 valores aplica primero al eje vertical (Y) y luego al horizontal (X). */
+padding: .5rem 1rem;
+display: flex;
+align-items: center;
+/* justify-content alinea los elementos en el eje principal (horizontalmente, en un flex row por defecto).
+- flex-start: alineados al inicio.
+- flex-end: alineados al final.
+- center: alineados al centro.
+- space-between: El primero pegado a la izq y el último a la der. Espacio distribuido entre los demás.
+- space-around: Espacio equivalente alrededor de cada elemento. */
+justify-content: space-between;
+gap: 2rem;
+
+/* Estilos para el texto de la marca (h2) dentro del header */
+h2 {
+font-size: 1.25rem;
+/* font-weight controla el "grosor" de la fuente (negrita, regular).
+Usos: normal, bold, bolder, o valores de 100 a 900. 700 equivale a bold. */
+font-weight: 700;
+color: var(--text-primary);
+}
+}
+
+/* --- Navegación principal dentro del o hacia otras páginas --- */
+nav {
+align-items: center;
+gap: 1rem;
+display: flex;
+
+/* Estilos para los enlaces (<a>) dentro del nav */
+a {
+/* Quita el subrayado natural que traen los enlaces (<a>).
+Otros usos: underline (con línea abajo), overline (línea arriba), line-through (tachado). */
+text-decoration: none;
+color: var(--text-secondary);
+/* transition: Crea una transición/animación suave de cambio de propiedad durante cierto tiempo (0.2s = 200ms). */
+transition: color 0.2s;
+font-weight: 700;
+
+/* Pseudo-clases (estados temporales del elemento):
+:hover -> cuando el cursor del ratón pasa por encima.
+:focus -> cuando se selecciona con la tecla Tab del teclado. */
+&:hover, &:focus {
+color: var(--primary);
+/* Elimina la línea azul/negra punteada perimetral que aparece al hacer focus en botones o enlaces. */
+outline: none;
+}
+}
+}
+
+
+/* Botones de acción del Header (login, register) */
+header div a {
+padding: 0.5rem 1rem;
+/* border-radius produce esquinas redondeadas. 0.5rem o en %. 100% o 999px produce un óvalo/círculo perfecto. */
+border-radius: 0.5rem;
+background-color: #07274b;
+color: var(--text-primary);
+/* display: inline-block;
+Combinación de bloque y línea: Se alinea en el texto uno al lado del otro, pero permite configurar width, height, padding, margins, algo que `inline` no deja. */
+display: inline-block;
+font-size: 0.875rem;
+font-weight: 700;
+text-decoration: none;
+}
+
+main{
+    text-align: center;
+    contain: layout;
+}
+
+section{
+    display: flex;
+    img
+    {
+    margin: 25px;
+    max-width: 500px;
+    };
+    .ocupa{
+        display: inline;
+    }
+}
+
+

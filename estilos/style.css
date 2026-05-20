@@ -1,0 +1,412 @@
+/* ==========================================================================
+GUÍA RÁPIDA DE UNIDADES EN CSS
+==========================================================================
+px (Píxeles): Unidad absoluta. 1px es un punto en la pantalla. Útil para bordes o sombras precisas.
+rem: Unidad relativa a la raíz (etiqueta <html>). Si el html tiene 16px, 1rem = 16px, 2rem = 32px. ¡Ideal para accesibilidad!
+em: Unidad relativa al elemento padre. Si el padre tiene 20px, 1em = 20px. Útil para márgenes relativos al tamaño del texto.
+vh / vw (Viewport Height / Width): Relativo al tamaño de la pantalla. 100vh es el 100% de la altura de la ventana visible.
+% (Porcentaje): Unidad relativa al elemento padre. Si el padre mide 500px, 50% serán 250px.
+========================================================================== */
+
+/* El selector universal (*) aplica estilos a todos los elementos del HTML */
+* {
+/* Elimina el margen por defecto de los elementos.
+Otros usos: margin: 10px; margin: 10px 20px; margin: auto (para centrar); */
+margin: 0;
+/* Elimina el relleno por defecto de los elementos (el espacio DENTRO del borde).
+Otros usos: padding: 1rem; padding: 10px 5px 0 0; */
+padding: 0;
+/* El tamaño del elemento incluye tanto el padding como el border.
+Otros usos: content-box (el tamaño width/height solo aplica al contenido, el padding y border se suman al tamaño final). */
+box-sizing: border-box;
+}
+
+/* :root selecciona el elemento raíz del documento (normalmente la etiqueta <html>).
+Es ideal para declarar variables CSS que se pueden usar en todo el documento llamándolas con var() */
+:root {
+/* Declaración de variables CSS para colores (formato hexadecimal y rgba) */
+--primary: #0c355e;
+--primary-dark: #0a3d66;
+--primary-hover: #0d5ba8;
+--primary-light: #09f;
+--background: #09223b;
+--text-primary: #7d87b1;
+--text-secondary: #cbd5e1;
+--text-muted: #94a3b8;
+--border: rgba(255, 255, 255, 0.1);
+--card-bg: #1e293b;
+--shadow: rgba(0, 0, 0, 0.3);
+--input-bg: #1e293b;
+--hsla-example: rgb(139, 102, 165);
+}
+
+/* Importación de fuente web 'Inter Variable' */
+@font-face {
+font-family: 'Inter Variable';
+font-style: normal;
+font-display: swap;
+font-weight: 100 900;
+src: url(https://cdn.jsdelivr.net/fontsource/fonts/inter:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* Estilos generales para el cuerpo de la página */
+body {
+/* Define la tipografía. system-ui usa la fuente por defecto del sistema operativo (Windows/Mac/iOS/Android). */
+font-family: system-ui;
+/* Define el color de fondo usando la variable --background.
+Otros usos: background-image: url(); background: linear-gradient(...); */
+background-color: var(--background);
+/* Define el color del texto. */
+color: var(--text-primary);
+/* Altura mínima del cuerpo: 100vh significa el 100% de la altura visible de la pantalla.
+Otros usos: min-height: 500px; min-height: 50%; */
+min-height: 100vh;
+/* ==================== DISPLAY ====================
+display: flex; convierte a este elemento en un contenedor flexible.
+Otras opciones de display:
+- block: El elemento ocupa todo el ancho disponible y crea un salto de línea (como un <div> o <p> por defecto).
+- inline: Ocupa solo el ancho necesario y NO permite configurar altura (height) ni margen superior/inferior (como <a> o <span> por defecto).
+- inline-block: Como inline, pero SÍ permite modificar ancho y alto.
+- grid: Crea un contenedor de cuadrícula que permite posicionar elementos en filas y columnas bidimensionales.
+- none: Oculta el elemento por completo como si no existiera en el HTML. */
+display: flex;
+/* Como es flex, le decimos que sus hijos se apilen de arriba hacia abajo (en columna).
+Otras opciones: row (de izquierda a derecha), row-reverse (derecha a izquierda), column-reverse. */
+flex-direction: column;
+/* Espaciado entre líneas de texto. 1.6 significa 1.6 veces el tamaño de la fuente. */
+line-height: 1.6;
+}
+
+/* --- Títulos principales --- */
+h1 {
+/* Tamaño de la tipografía. 1.5rem equivale a (1.5 * 16px) si 16px es la base del HTML. */
+font-size: 1.5rem;
+/* Altura de la línea específica para el título h1. */
+line-height: 1.2;
+/* Propiedad moderna: ajusta automáticamente el texto largo para que quede balanceado sin "viudas" al final. */
+text-wrap: balance;
+display: flex;
+/* align-items alinea los elementos a lo largo del eje transversal (verticalmente, en un display flex row).
+- center: Los centra.
+- flex-start: Los alinea al tope.
+- flex-end: Los alinea al fondo.
+- stretch: Estira los elementos para llenar el contenedor. */
+align-items: center;
+/* gap: define la separación "hueco" automática entre los elementos hijos de este display flex. */
+gap: 0.5rem;
+
+/* Estilos anidados para los SVG dentro del h1 (requiere un preprocesador o CSS moderno) */
+svg {
+/* width: ancho del elemento. Otros usos: %, vw, auto. */
+width: 2rem;
+/* height: alto del elemento. Otros usos: %, vh, auto. */
+height: 2rem;
+color: var(--primary-light);
+}
+}
+
+/* El selector + (hermano adyacente) selecciona cualquier <p> que siga INMEDIATAMENTE después de un <h1> en el HTML */
+h1 + p {
+text-wrap: balance;
+/* Margen en la parte inferior para darle espacio al siguiente elemento. */
+margin-bottom: 2rem;
+}
+
+/* --- Header o Encabezado de la página --- */
+header {
+/* border-bottom: Añade una línea en la parte inferior del elemento.
+Estructura: [grosor] [estilo: solid, dashed, dotted, double] [color] */
+border-bottom: 1px solid var(--border);
+background: var(--background);
+/* padding: .5rem arriba/abajo y 1rem izquierda/derecha.
+La sintaxis de 2 valores aplica primero al eje vertical (Y) y luego al horizontal (X). */
+padding: .5rem 1rem;
+display: flex;
+align-items: center;
+/* justify-content alinea los elementos en el eje principal (horizontalmente, en un flex row por defecto).
+- flex-start: alineados al inicio.
+- flex-end: alineados al final.
+- center: alineados al centro.
+- space-between: El primero pegado a la izq y el último a la der. Espacio distribuido entre los demás.
+- space-around: Espacio equivalente alrededor de cada elemento. */
+justify-content: space-between;
+gap: 2rem;
+
+/* Estilos para el texto de la marca (h2) dentro del header */
+h2 {
+font-size: 1.25rem;
+/* font-weight controla el "grosor" de la fuente (negrita, regular).
+Usos: normal, bold, bolder, o valores de 100 a 900. 700 equivale a bold. */
+font-weight: 700;
+color: var(--text-primary);
+}
+}
+
+/* --- Navegación principal dentro del o hacia otras páginas --- */
+nav {
+align-items: center;
+gap: 1rem;
+display: flex;
+
+/* Estilos para los enlaces (<a>) dentro del nav */
+a {
+/* Quita el subrayado natural que traen los enlaces (<a>).
+Otros usos: underline (con línea abajo), overline (línea arriba), line-through (tachado). */
+text-decoration: none;
+color: var(--text-secondary);
+/* transition: Crea una transición/animación suave de cambio de propiedad durante cierto tiempo (0.2s = 200ms). */
+transition: color 0.2s;
+font-weight: 500;
+
+/* Pseudo-clases (estados temporales del elemento):
+:hover -> cuando el cursor del ratón pasa por encima.
+:focus -> cuando se selecciona con la tecla Tab del teclado. */
+&:hover, &:focus {
+color: var(--primary);
+/* Elimina la línea azul/negra punteada perimetral que aparece al hacer focus en botones o enlaces. */
+outline: none;
+}
+}
+}
+
+/* Botones de acción del Header (login, register) */
+header div a {
+padding: 0.5rem 1rem;
+/* border-radius produce esquinas redondeadas. 0.5rem o en %. 100% o 999px produce un óvalo/círculo perfecto. */
+border-radius: 0.5rem;
+background-color: #555c64;
+color: var(--text-primary);
+/* display: inline-block;
+Combinación de bloque y línea: Se alinea en el texto uno al lado del otro, pero permite configurar width, height, padding, margins, algo que `inline` no deja. */
+display: inline-block;
+font-size: 0.875rem;
+font-weight: 700;
+text-decoration: none;
+}
+
+/* --- Sección Hero (Primera sección principal con imagen llamativa) --- */
+/* :nth-child(1) busca el primer hijo del elemento <main> que a su vez sea un <section>. */
+main > section:nth-child(1) {
+height: 500px;
+/* text-align: center: Centra el texto horizontalmente. (Otras: left, right, justify). */
+text-align: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+h1 {
+/* Relleno superior interno porque de fondo hay una imagen. */
+padding-top: 36px;
+}
+
+& > img {
+/* position: absolute; Extrae este elemento del flujo normal del documento y lo podemos
+posicionar con base en su ancestro más cercano que tenga position relative/absolute.
+Otros usos de position:
+- static (por defecto, sigue el orden).
+- relative (movible usando top, left, bottom, right, relativo a sí mismo y anclando absolutos en él).
+- fixed (pegado siempre en pantalla aunque hagas scroll).
+- sticky (se comporta static hasta bajar con scroll, entonces se vuelve fixed). */
+position: absolute;
+width: 100%;
+height: 100%;
+/* object-fit: cover; recorta y ajusta la imagen garantizando el área cubierta (para que la imagen no se deforme/distorsione ni estire horizontalmente).
+Otros usos: contain (muéstrala toda aunque queden bordes negros vacíos). */
+object-fit: cover;
+/* z-index ajusta el orden de capas como en Photoshop. Entre menor, más abajo. Así la mandamos al fondo. */
+z-index: -1;
+left: 0;
+right: 0;
+/* mask-image crea un degradado que sirve de máscara difuminando la imagen para que termine fundiéndose lentamente en la zona oscura inferior. */
+mask-image: linear-gradient(to bottom, rgba(16, 25, 34, 1) 5%, rgba(16, 25, 34, 0) 80%);
+}
+}
+
+/* --- Formulario de Búsqueda --- */
+form {
+/* max-width limita el ancho máximo en pantallas grandes (42rem son como 672 píxeles). */
+max-width: 42rem;
+width: 100%;
+/* margin: 0 auto; truco legendario para centrar horizontalmente cualquier contenedor definido con un width o max-width en bloques "block".
+El 0 es arriba y abajo. Auto distribuye espacio igual para left y right. */
+margin: 0 auto;
+/* padding-inline aplica espaciado interno a los lados lógicos (izquierdo y derecho). */
+padding-inline: 1rem;
+}
+
+form > div {
+display: flex;
+align-items: center;
+background-color: var(--input-bg);
+border-radius: 0.5rem;
+/* box-shadow crea un sombreado oscuro en 3D.
+Sintaxis: Offset X (0), Offset Y (10px), Desenfoque blur (15px), Propagación/Spread (-3px), Color (rgba variable). */
+box-shadow: 0 10px 15px -3px var(--shadow);
+padding: 0.5rem;
+gap: 0.5rem;
+}
+
+form span {
+padding-left: 0.75rem;
+color: var(--text-muted);
+display: flex;
+align-items: center;
+/* flex-shrink: 0; Asegura que este elemento (el icono) nunca se comprima/reduzca su tamaño si el contenedor carece de espacio (ej. en móviles). */
+flex-shrink: 0;
+}
+
+form input[type="text"] {
+/* flex: 1; Le dice a esto que crezca y ocupe automáticamente todo el espacio libre restante en el flex box contenedor. */
+flex: 1;
+/* transparent anula el color blanco estático interior para que use el color fondo contenedor (var--input-bg) */
+background: transparent;
+/* border: none elimina el molesto borde exterior típico tipo windows de inputs nativos HTML. */
+border: none;
+/* outline: none elimina el remarcado que el navegador coloca cuando un input hace focus. */
+outline: none;
+color: var(--text-primary);
+padding: 0.75rem 0.5rem;
+font-size: 1rem;
+/* inherit hereda el parámetro en cadena directa a los ancestros (en este caso el font-family general del body css). */
+font-family: inherit;
+}
+
+form input[type="text"]::placeholder {
+/* targetea específicamente el texto desvaído previo, p ej. "busqueda de trabajo", asignándole color tenue. */
+color: #64748b;
+}
+
+/* --- Botón "Buscar" --- */
+button {
+padding: 0.75rem 1.5rem;
+border-radius: 0.5rem;
+background-color: var(--primary);
+color: rgb(255, 255, 255);
+font-weight: 400;
+border: none;
+/* cursor: Cambia el puntero. pointer saca la icónica de "manito". Otras útiles: default, crosshair, not-allowed (bloqueado/no dejar), text (para texto) */
+cursor: pointer;
+/* transition: all 0.2s permite una animación general suave. En particular para el hover y clic activo. */
+transition: all 0.2s;
+font-family: inherit;
+font-size: 1rem;
+/* white-space: nowrap impide saltos de línea internos en caso de que el botón sea algo largo y choque las paredes del contenedor mobil. */
+white-space: nowrap;
+
+&:hover,
+&:focus {
+background-color: var(--primary-hover);
+/* outline exterior a nuestro botón (como "dos bordes") */
+outline: 2px solid white;
+/* offset aleja dicho contorno/outline a unos píxeles distantes y crea vacíos visuales de la línea. */
+outline-offset: 2px;
+}
+
+/* :active es un micro estado, ejecutado al "hacer el click físico presionado en ratón" */
+&:active {
+/* transform: scale hace que el botón se sienta presionable como en la vida real reduciendo tamaño. (0.90 es "encógelo un modesto 10%") */
+transform: scale(0.90)
+}
+
+&:disabled {
+/* reduce a 50% la saturación u opacidad al inhabilitar desde el html con la etiqueta HTML disabled */
+opacity: .5;
+/* pointer-events anula clicks, hovers o focus. */
+pointer-events: none;
+}
+}
+
+/* --- Sección "curated openings" (Segunda sección) --- */
+main > section:nth-child(2) {
+padding-inline: 1rem;
+background-color: var(--background);
+padding-top: 2rem;
+
+& > header {
+gap: 2px;
+flex-direction: column;
+
+h2 {
+margin-bottom: 0;
+}
+
+p {
+opacity: .75;
+}
+}
+
+& > div {
+max-width: 1280px;
+margin: 0 auto;
+}
+}
+
+main > section:nth-child(2) h2 {
+font-size: 1.875rem;
+font-weight: 700;
+color: var(--text-primary);
+margin-bottom: 1rem;
+}
+
+main > section:nth-child(2) > div > div:first-child > p {
+font-size: 1.125rem;
+color: var(--text-muted);
+max-width: 42rem;
+margin: 0 auto;
+}
+
+/* --- Grid de Features/Trabajos --- */
+main > section:nth-child(2) footer {
+/* display: grid es más avanzado que Flexbox para layouts estructurados enteros. Creado especialmente para retículas bidimensionales. */
+display: grid;
+/* grid-template-columns decide las columnas. grid-template-rows filas.
+repeat(auto-fit, minmax(280px, 1fr)): Traducido al español es: Intenta meter "automáticamente todas las cajas a lo ancho", asegúrate de que cada una tenga OBLIGATORIAMENTE mínimo 280px, o 1fr (1 fricción entera / espacio disponible general). Es un truco para diseño responsive con Grid sin Media Queries. */
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+/* espaciador entre todos los ítems de las rejillas entre columnas y filas. */
+gap: 16px
+}
+
+/* --- Footer general de la página web al final del html --- */
+footer {
+background-color: var(--background);
+border-top: 1px solid var(--border);
+text-align: center;
+padding: 16px;
+
+small {
+color: var(--text-muted);
+font-size: 0.875rem;
+}
+}
+
+/* Tarjetas (cards) de la cuadrícula de trabajos, hechas en etiquetas semánticas article HTML.
+Esto está estilizando un conjunto de columnas "articulos" o posts */
+article {
+background-color: var(--card-bg);
+padding: 2rem;
+margin-bottom: 10px;
+border-radius: 10rem;
+/* La famosa sombra tipo shadow material-UI externa en eje X/Y */
+box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+svg {
+color: var(--primary-light);
+/* Un "blue-cyan" transparente a gusto, el valor 0.3 o .3 dicta el nivel ALPHA y baja intensidad */
+background: rgba(0, 153, 255, .3);
+width: 64px;
+height: 64px;
+border-radius: 100%;
+padding: 16px;
+}
+
+p {
+color: var(--text-muted);
+}
+
+h3 {
+font-weight: 500;
+}
+}
+
+
