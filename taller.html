@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NETFLIX</title>
     <link rel="stylesheet" href="./estilos/taller_style.css">
 </head>
+
 <body>
     <header class="site-header">
         <div class="brand">
@@ -24,23 +26,74 @@
             <a href="#stats">Ficcion y Accion</a>
             <a href="#empresas">Romanticas</a>
         </nav>
-    </header>   
-</body>
-</html>
-
-
- <main class="page">
+    </header>
+    <main class="page">
         <!-- Seccion principal con imagen + datos (layout tipo tarjeta) -->
+
         <section class="profile">
-            <img src="./1639817723_888453_1639817851_noticia_normal_recorte1.jpg"  alt="Imagen de oficina" class="profile-photo" />
-          
+            <section class="carousel" aria-label="Gallery">
+                <ol class="carousel__viewport">
+                    <li id="carousel__slide1" tabindex="0" class="carousel__slide">
+                        <div class="carousel__snapper">
+                            <a href="./main_netflix-nouvelle-interface-en-test-sur-smartstv_06523018.webp"
+                                class="carousel__prev">Go to last slide</a>
+                            <a href="#carousel__slide2" class="carousel__next">Go to next slide</a>
+                        </div>
+                    </li>
+                    <li id="carousel__slide2" tabindex="0" class="carousel__slide">
+                        <div class="carousel__snapper"></div>
+                        <a href="./main_netflix-nouvelle-interface-en-test-sur-smartstv_06523018.webp"
+                            class="carousel__prev">Go to previous slide</a>
+                        <a href="#carousel__slide3" class="carousel__next">Go to next slide</a>
+                    </li>
+                    <li id="carousel__slide3" tabindex="0" class="carousel__slide">
+                        <div class="carousel__snapper"></div>
+                        <a href="#carousel__slide2" class="carousel__prev">Go to previous slide</a>
+                        <a href="#carousel__slide4" class="carousel__next">Go to next slide</a>
+                    </li>
+                    <li id="carousel__slide4" tabindex="0" class="carousel__slide">
+                        <div class="carousel__snapper"></div>
+                        <a href="#carousel__slide3" class="carousel__prev">Go to previous slide</a>
+                        <a href="#carousel__slide1" class="carousel__next">Go to first slide</a>
+                    </li>
+                </ol>
+                <aside class="carousel__navigation">
+                    <ol class="carousel__navigation-list">
+                        <li class="carousel__navigation-item">
+                            <a href="#carousel__slide1" class="carousel__navigation-button">Go to slide 1</a>
+                        </li>
+                        <li class="carousel__navigation-item">
+                            <a href="#carousel__slide2" class="carousel__navigation-button">Go to slide 2</a>
+                        </li>
+                        <li class="carousel__navigation-item">
+                            <a href="#carousel__slide3" class="carousel__navigation-button">Go to slide 3</a>
+                        </li>
+                        <li class="carousel__navigation-item">
+                            <a href="#carousel__slide4" class="carousel__navigation-button">Go to slide 4</a>
+                        </li>
+                    </ol>
+                </aside>
+            </section>
             <div class="profile-info">
                 <h1>NETFLIX</h1>
                 <p class="role">Plataforma de series y peliculas</p>
                 <div class="profile-meta">
                     <div>
-                        <p class="meta-label">Ubicacion</p>
-                       
+                        <p class="meta-label">Es una plataforma de entretenimiento por suscripción que permite ver
+                            películas,
+                            series, documentales y otros contenidos a través de internet en dispositivos como
+                            computadoras,
+                            teléfonos móviles, tabletas, televisores inteligentes y consolas de videojuegos.</p>
+
+                    </div>
                 </div>
-            </div>
         </section>
+        <section class="section-terror">
+            <header class="section-header">
+                <h2>Terror</h2>
+            </header>
+            <img src="his-house-2.webp" alt="his-house-2">
+        </section>
+</body>
+
+</html>
