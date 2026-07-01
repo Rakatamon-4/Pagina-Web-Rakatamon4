@@ -11,15 +11,20 @@
 <body>
     <header class="site-header">
         <div class="brand">
-            <span class="brand-icon">N</span>
+            <svg xmlns="http://www.w3.org/2000/svg"
+             width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+               class="icon icon-tabler icons-tabler-outline icon-tabler-brand-netflix">
+               <path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 3l10 18h-4l-10 -18l4 0" />
+               <path d="M5 3v18h4v-10.5" /><path d="M19 21v-18h-4v10.5" /></svg>
             <div>
                 <p class="brand-title"><strong></strong></p>
             </div>
         </div>
         <form class="search" role="search">
             <label class="sr-only" for="search-input">Buscar</label>
-            <input id="search-input" type="text" placeholder="Buscar series" />
-            <button type="submit">Buscar</button>
+            <input id="search-input" class="search-input" type="text" placeholder="Buscar series" />
+            <button class="search-button" type="submit">Buscar</button>
         </form>
         <nav class="main-nav" aria-label="Navegacion">
             <a href="#destacadas">Terror</a>
@@ -90,12 +95,47 @@
                 </div>
             </div>
         </section>
-        <section class="section-terror">
+
+        <section class="series-info">
             <header class="section-header">
-                <h2>Terror</h2>
+                <h2>Lo más Destacado</h2>
             </header>
-            <img src="his-house-2.webp" alt="his-house-2">
+            <P class="texto">
+                Descubre una selección de las series y películas que están marcando tendencia.
+                 Explora los estrenos más esperados, los grandes éxitos del momento y las producciones 
+                 imprescindibles para disfrutar de 
+                 historias inolvidables. Mantente al día con las mejores recomendaciones y encuentra tu próxima favorita en un solo lugar.
+            </P>
+            
         </section>
+
+        <section class="section" id="empresas">
+    
+            <div class="card-grid card-grid--photos">
+                <article class="photo-card">
+                    <div class="photo-placeholder">
+                        <img src = "his-house-2.webp">
+                    </div>
+                    <p class="card-title">His House</p>
+                    <p class="card-subtitle">Premio Oscar 2020</p>
+                </article>
+                <article class="photo-card">
+                    <div class="photo-placeholder">
+                        <img src = "Sin-novedad-en-el-frente-pelicula-de-Netflix-1024x576.jpg"> 
+                    </div>
+                    <p class="card-title">Sin Novedad en el Frente</p>
+                    <p class="card-subtitle">Premio Nobel 2022</p>
+                </article>
+                <article class="photo-card">
+                    <div class="photo-placeholder">
+                        <img src = "wp12134063.jpg">
+                    </div>
+                    <p class="card-title">Titanic</p>
+                    <p class="card-subtitle">Grammy 2018</p>
+                </article>
+                </div>
+        </section>
+    </main>
 </body>
 
 </html>
